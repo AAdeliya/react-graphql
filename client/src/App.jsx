@@ -26,6 +26,10 @@ function App() {
 
 
     <div> {data.getUsers.map((user) => {
+      <div>
+
+        <p>Name : {user.name} </p>
+      </div>
 
 
 
