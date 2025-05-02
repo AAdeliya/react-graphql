@@ -11,8 +11,20 @@ query GetUsers {
 }
 `;
 
+const GET_USERS_BY_ID = gql`
+query GetUsersById($id:ID!) {
+  getUsersById(id: $id) {
+    id
+    age
+    name
+  }
+}
+`;
+
 function App() {
-  const {data, error, loading} = useQuery(GET_USERS);
+  const {data: getUsersData, error: getUsersError, loading:getUsersLoading} = useQuery(GET_USERS);
+  const {data, error, loading} = useQuery(GET_USERS_By_ID);
+
 
   if (loading) return  <p> Data loading...</p>;
 
@@ -29,6 +41,8 @@ function App() {
       <div>
 
         <p>Name : {user.name} </p>
+        <p>Age : {user.age} </p>
+        <p>Is this person married: {user.isMarried ? "Yes" : "No"} </p>
       </div>
 
 
